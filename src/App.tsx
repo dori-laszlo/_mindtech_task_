@@ -1,54 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Heading from './components/Heading';
+import Select from './components/Select';
+import Chart from './components/Chart';
+import { strings } from './resources/strings';
+import './App.scss';
+
+const mockData = [
+  { uv: 345, name: 'tested' },
+  { uv: 74, name: 'infected' },
+  { uv: 745, name: 'hospitalized' },
+];
 
 function App() {
+  const [chartType, setChartType] = useState('area');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+    <div className="container-fluid mt-5">
+      <div className="row d-flex justify-content-center">
+        <div className="col-3">
+          <Heading text={strings.heading} className="text-center text-uppercase" />
+        </div>
+        <div className="row d-flex justify-content-center">
+          <div className="col-2 mt-4">
+            <Select
+              defaultText={strings.deafultSelect}
+              optionArea={strings.optionArea}
+              optionBar={strings.optionBar}
+              optionLine={strings.optionLine}
+            />
+          </div>
+        </div>
+      </div>
+      <div className=" row d-flex justify-content-center mt-5">
+        <Chart color="orange" width={400} height={300} data={mockData} chartType={'area'} />
+      </div>
     </div>
   );
 }

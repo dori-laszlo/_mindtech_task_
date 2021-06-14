@@ -1,0 +1,9 @@
+//Global variables
+$primary: #8884d8;
+
+:export {
+    primaryColor: $primary;
+}
+
+//Bootstrap custom styles
+@import "node_modules/bootstrap/scss/bootstrap";
